@@ -54,24 +54,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and().httpBasic()
                 .and().csrf().disable();
     }
-    //http
-    //			.authorizeRequests()//配置权限
-    //				.anyRequest().authenticated()//任意请求需要登录
-    //				.and()
-    //			.formLogin()//开启formLogin默认配置
-    //				.loginPage("/login/auth").permitAll()//请求时未登录跳转接口
-    //		                .failureUrl("/login/fail")//用户密码错误跳转接口
-    //				.defaultSuccessUrl("/login/success",true)//登录成功跳转接口
-    //				.loginProcessingUrl("/login")//post登录接口，登录验证由系统实现
-    //				.usernameParameter("username")	//要认证的用户参数名，默认username
-    //				.passwordParameter("password")	//要认证的密码参数名，默认password
-    //				.and()
-    //			.logout()//配置注销
-    //				.logoutUrl("/logout")//注销接口
-    //				.logoutSuccessUrl("/login/logout").permitAll()//注销成功跳转接口
-    //				.deleteCookies("myCookie") //删除自定义的cookie
-    //				.and()
-    //			.csrf().disable();
 
     @Bean
     public PasswordEncoder passwordEncoder() {
