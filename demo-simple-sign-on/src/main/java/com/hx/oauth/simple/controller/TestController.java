@@ -5,6 +5,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 /**
  * @author houxi
  * @version 1.0
@@ -27,5 +29,11 @@ public class TestController {
     @GetMapping(value = "find/all")
     public String find(){
         return "This is all";
+    }
+
+    @GetMapping(value = "user")
+    public Principal user(Principal principal) {
+        System.out.println("调用user接口获取用户信息：" + principal);
+        return principal;
     }
 }

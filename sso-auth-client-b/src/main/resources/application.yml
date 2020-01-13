@@ -1,0 +1,11 @@
+server:
+  port: 8082
+security:
+  oauth2:
+    client:
+      client-id: client2
+      client-secret: secret2
+      access-token-uri: http://localhost:8080/auth/oauth/token
+      user-authorization-uri: http://localhost:8080/auth/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8080/user # 从授权服务器获取当前登录用户信息的地址

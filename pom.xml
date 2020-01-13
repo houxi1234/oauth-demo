@@ -15,6 +15,10 @@
     <modules>
         <module>demo-protected-resource</module>
         <module>demo-simple-sign-on</module>
+        <module>sso-auth-server</module>
+        <module>sso-auth-resource</module>
+        <module>sso-auth-client-a</module>
+        <module>sso-auth-client-b</module>
     </modules>
 
     <build>

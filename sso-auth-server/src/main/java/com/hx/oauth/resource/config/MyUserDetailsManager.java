@@ -1,20 +1,16 @@
-package com.hx.oauth.simple.service.impl;
+package com.hx.oauth.resource.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +28,7 @@ public class MyUserDetailsManager implements UserDetailsService {
 
     static {
         userDetailsDao = new HashMap<>();
-        User user = new User("user", "{bcrypt}$2a$10$KefBTiAKaATWTJWCfhMUHOCjlxW1TZprKT4DpTPH9Qvyrg58W2SPy", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+        User user = new User("user", "{bcrypt}$2a$10$KefBTiAKaATWTJWCfhMUHOCjlxW1TZprKT4DpTPH9Qvyrg58W2SPy", AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
         userDetailsDao.put(user.getUsername(), user);
     }
 

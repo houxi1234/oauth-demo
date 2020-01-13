@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 @SpringBootApplication
-@EnableOAuth2Sso
 @EnableResourceServer
 public class DemoProtectedResourceApplication {
 

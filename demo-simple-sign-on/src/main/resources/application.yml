@@ -1,7 +1,14 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   thymeleaf:
     mode: HTML5
     prefix: classpath:/static/
+
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: https://localhost:8081/find/all
+      preferTokenInfo: false
