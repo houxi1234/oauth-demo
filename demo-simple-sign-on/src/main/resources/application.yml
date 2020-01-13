@@ -1,9 +1,7 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   thymeleaf:
-    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
     mode: HTML5
-    #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/static/
