@@ -32,7 +32,7 @@ public class MyUserDetailsManager implements UserDetailsService {
 
     static {
         userDetailsDao = new HashMap<>();
-        User user = new User("user", "{bcrypt}$2a$10$KefBTiAKaATWTJWCfhMUHOCjlxW1TZprKT4DpTPH9Qvyrg58W2SPy", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+        User user = new User("user", "{bcrypt}$2a$10$KefBTiAKaATWTJWCfhMUHOCjlxW1TZprKT4DpTPH9Qvyrg58W2SPy", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ANONYMOUS"));
         userDetailsDao.put(user.getUsername(), user);
     }
 

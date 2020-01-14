@@ -6,9 +6,6 @@ spring:
     mode: HTML5
     prefix: classpath:/static/
 
-
-security:
-  oauth2:
-    resource:
-      userInfoUri: https://localhost:8081/find/all
-      preferTokenInfo: false
+logging:
+  level:
+    org.springframework: debug
