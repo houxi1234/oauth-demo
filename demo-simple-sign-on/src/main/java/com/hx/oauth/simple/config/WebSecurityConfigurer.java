@@ -37,9 +37,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
-                .antMatchers("/oauth/**", "/login/**", "/logout/**","/error")
-                .and().authorizeRequests().antMatchers("/get/**").authenticated()
+//                .requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
+//                .antMatchers("/oauth/**", "/login/**", "/logout/**","/error")
+                .authorizeRequests().antMatchers("/get/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login.html").loginProcessingUrl("/login").defaultSuccessUrl("/find/all",false).permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login.html").permitAll()

@@ -38,7 +38,6 @@ public class SsoAuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .scopes("all", "read", "write")
                 .autoApprove(true)
                 .redirectUris("http://www.baidu.com")
-//                .redirectUris("http://localhost:8081/login")
                 .and()
                 .withClient("client2")
                 .secret((passwordEncoder.encode("secret2")))
