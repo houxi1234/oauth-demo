@@ -1,3 +1,4 @@
+auth-server: http://localhost:8080
 server:
   port: 8082
 security:
@@ -5,8 +6,12 @@ security:
     client:
       client-id: client1
       client-secret: secret1
-      access-token-uri: http://localhost:8080/oauth/token
-      user-authorization-uri: http://localhost:8080/oauth/authorize
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
       use-current-uri: false
     resource:
-      user-info-uri: http://localhost:8080/user # 从授权服务器获取当前登录用户信息的地址
+      user-info-uri: ${auth-server}/user # 从授权服务器获取当前登录用户信息的地址
+      token-info-uri: ${auth-server}/oauth/check_token
+logging:
+  level:
+    org.springframework: debug

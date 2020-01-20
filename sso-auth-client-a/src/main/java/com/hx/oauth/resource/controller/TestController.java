@@ -20,10 +20,15 @@ import java.security.Principal;
 @RestController
 public class TestController {
     private static final Logger log = LoggerFactory.getLogger(TestController.class);
+
+
     @GetMapping(value = "api/{id}")
     public String get(@PathVariable("id") String id){
         return "This is " + id;
     }
+
+
+
     @GetMapping("/user")
     public Authentication getUser(Authentication authentication) {
         log.info("resource: user {}", authentication);

@@ -4,11 +4,14 @@ package com.hx.oauth.simple.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+
+import javax.sql.DataSource;
 
 /**
  * @author houxi
@@ -23,6 +26,11 @@ public class SsoAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
+
+    @Autowired
+    private DataSource dataSource;
+
     /**
      * 客户端一些配置
      *
@@ -31,6 +39,7 @@ public class SsoAuthServerConfig extends AuthorizationServerConfigurerAdapter {
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+//        clients.jdbc(dataSource);
         clients.inMemory()
                 .withClient("client1")
                 .secret((passwordEncoder.encode("secret1")))
@@ -51,6 +60,11 @@ public class SsoAuthServerConfig extends AuthorizationServerConfigurerAdapter {
         oauthServer.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
+    }
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        System.out.println(bCryptPasswordEncoder.encode("secret1"));
     }
 }
 

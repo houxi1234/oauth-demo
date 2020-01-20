@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.
                 csrf().disable()
-                .requestMatchers()
+                .requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
                 .antMatchers("/oauth/**", "/login/**", "/logout/**","/error")
                 .and()
                 .httpBasic();
