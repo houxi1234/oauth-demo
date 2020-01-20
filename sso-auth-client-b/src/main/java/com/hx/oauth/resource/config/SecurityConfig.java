@@ -17,13 +17,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.
-                csrf().disable()
-                .requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
-                .antMatchers("/oauth/**", "/login/**", "/logout/**","/error")
-                .and()
-                .httpBasic();
-    }
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        http.
+//                csrf().disable()
+//                .httpBasic();
+//    }
 }

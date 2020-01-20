@@ -10,7 +10,7 @@ security:
       user-authorization-uri: ${auth-server}/oauth/authorize
       use-current-uri: false
     resource:
-      user-info-uri: ${auth-server}/user # 从授权服务器获取当前登录用户信息的地址
+      user-info-uri: ${auth-server}/user
       token-info-uri: ${auth-server}/oauth/check_token
 logging:
   level:
