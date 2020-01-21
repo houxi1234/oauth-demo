@@ -5,7 +5,7 @@ security:
   oauth2:
     client:
       client-id: client1
-      client-secret: secret1
+      client-secret: secret2
       access-token-uri: ${auth-server}/oauth/token
       user-authorization-uri: ${auth-server}/oauth/authorize
       use-current-uri: false

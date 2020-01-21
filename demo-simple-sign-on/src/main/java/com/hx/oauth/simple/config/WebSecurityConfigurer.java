@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -37,8 +38,6 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-//                .requestMatchers()//使HttpSecurity接收以"/login/","/oauth/"开头请求。
-//                .antMatchers("/oauth/**", "/login/**", "/logout/**","/error")
                 .authorizeRequests().antMatchers("/get/**").authenticated()
                 .and()
                 .formLogin().loginPage("/login.html").loginProcessingUrl("/login").defaultSuccessUrl("/find/all",false).permitAll()
@@ -46,6 +45,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
                 .and().httpBasic()
                 .and().csrf().disable();
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        AuthenticationManager manager = super.authenticationManagerBean();
+        return manager;
     }
 
     @Bean

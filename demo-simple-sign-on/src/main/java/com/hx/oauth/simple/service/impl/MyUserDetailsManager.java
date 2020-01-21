@@ -1,5 +1,7 @@
 package com.hx.oauth.simple.service.impl;
 
+import com.hx.oauth.simple.mapper.SysUserMapper;
+import com.hx.oauth.simple.po.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,8 @@ public class MyUserDetailsManager implements UserDetailsService {
     private static Map<String, User> userDetailsDao;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private SysUserMapper userMapper;
 
     static {
         userDetailsDao = new HashMap<>();
@@ -40,6 +44,7 @@ public class MyUserDetailsManager implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUser byUserName = userMapper.findByUserName(username);
         User user = userDetailsDao.get(username);
         if (null == user) {
             log.warn("用户{}不存在", username);
