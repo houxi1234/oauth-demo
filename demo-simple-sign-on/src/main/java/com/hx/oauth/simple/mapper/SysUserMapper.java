@@ -2,6 +2,7 @@ package com.hx.oauth.simple.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hx.oauth.simple.po.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.hx.oauth.simple.po.SysUser;
  * @author houxi
  * @since 2019-10-23
  */
+@Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 

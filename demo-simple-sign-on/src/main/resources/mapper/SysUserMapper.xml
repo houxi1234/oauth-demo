@@ -1,74 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tx.dreamer.service.upms.mapper.SysUserMapper">
+<mapper namespace="com.hx.oauth.simple.mapper.SysUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.tx.dreamer.service.upms.po.SysUser">
+    <resultMap id="BaseResultMap" type="com.hx.oauth.simple.po.SysUser">
         <result column="id" property="id" />
-        <result column="is_deleted" property="isDeleted" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
-        <result column="login_name" property="loginName" />
-        <result column="user_name" property="userName" />
-        <result column="user_type" property="userType" />
-        <result column="email" property="email" />
-        <result column="phone_number" property="phoneNumber" />
-        <result column="sex" property="sex" />
-        <result column="birth_date" property="birthDate" />
-        <result column="avatar" property="avatar" />
+        <result column="username" property="userName" />
         <result column="password" property="password" />
-        <result column="salt" property="salt" />
-        <result column="status" property="status" />
-        <result column="login_ip" property="loginIp" />
-        <result column="login_date" property="loginDate" />
-        <result column="create_by" property="createBy" />
-        <result column="update_by" property="updateBy" />
-        <result column="remark" property="remark" />
-        <result column="version" property="version" />
+        <result column="icon" property="icon" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="create_time" property="createTime" />
+        <result column="login_time" property="loginTime" />
+        <result column="update_time" property="updateTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id,
-        is_deleted,
-        create_time,
-        update_time,
-        login_name, user_name, user_type, email, phone_number, sex, avatar, password, salt, status, login_ip, login_date, create_by, update_by, remark, version
+        login_name, user_name, user_type, email, phone_number, sex, avatar, password, status, login_ip, login_date
     </sql>
-    <select id="find" resultMap="BaseResultMap"
-            parameterType="com.tx.dreamer.service.upms.po.SysUser">
-        select
-            <include refid="Base_Column_List" />
-        from
-        sys_user
-        <where>
-            is_deleted = false
-            <if test="use.loginName != null and use.loginName != ''">
-                and login_name = #{use.loginName}
-            </if>
-            <if test="use.userName != null and use.userName != ''">
-                and user_name = #{use.userName}
-            </if>
-            <if test="use.userType != null and use.userType != ''">
-                and user_type = #{use.userType}
-            </if>
-            <if test="use.email != null and use.email != ''">
-                and email = #{use.email}
-            </if>
-            <if test="use.phoneNumber != null and use.phoneNumber != ''">
-                and phone_number = #{use.phoneNumber}
-            </if>
-            <if test="use.sex != null and use.sex != ''">
-                and sex = #{use.sex}
-            </if>
-            <if test="use.status != null and use.status != ''">
-                and status = #{use.status}
-            </if>
-        </where>
-    </select>
     <select id="findByPhoneNumber" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
+        password
         from
         sys_user
         where
@@ -78,21 +32,11 @@
     </select>
     <select id="findByUserName" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
+        password
         from
         sys_user
         where
-        user_name = #{userName}
+        username = #{userName}
         limit 1
     </select>
-    <select id="findById" resultType="com.tx.dreamer.service.upms.api.vo.SysUserVO">
-        select
-        <include refid="Base_Column_List" />
-        from
-        sys_user
-        where
-        id = #{id}
-        limit 1
-    </select>
-
 </mapper>

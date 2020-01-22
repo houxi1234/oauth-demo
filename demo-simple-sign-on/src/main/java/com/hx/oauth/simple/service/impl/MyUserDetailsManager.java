@@ -28,31 +28,21 @@ import java.util.Map;
 @Component
 public class MyUserDetailsManager implements UserDetailsService {
     private static final Logger log = LoggerFactory.getLogger(MyUserDetailsManager.class);
-    private static Map<String, User> userDetailsDao;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private SysUserMapper userMapper;
 
-    static {
-        userDetailsDao = new HashMap<>();
-        User user = new User("user", "{bcrypt}$2a$10$KefBTiAKaATWTJWCfhMUHOCjlxW1TZprKT4DpTPH9Qvyrg58W2SPy", AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ANONYMOUS"));
-        userDetailsDao.put(user.getUsername(), user);
-    }
-
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser byUserName = userMapper.findByUserName(username);
-        User user = userDetailsDao.get(username);
-        if (null == user) {
+        SysUser sysUserName = userMapper.findByUserName(username);
+        if (null == sysUserName) {
             log.warn("用户{}不存在", username);
             throw new UsernameNotFoundException(username);
         }
-        User myUser = new User(user.getUsername(), passwordEncoder.encode(user.getPassword()), user.getAuthorities());
-        log.info("登录成功！用户: {}, 密码: {}", myUser, myUser.getPassword());
-        log.info(user.getPassword());
+        User myUser = new User(sysUserName.getUserName(), passwordEncoder.encode(sysUserName.getPassword()), new ArrayList<>());
         return myUser;
     }
 }

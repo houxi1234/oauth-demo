@@ -20,20 +20,14 @@ public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 登录账号
-     */
-    private String loginName;
+    private String id;
 
     /**
      * 用户昵称
      */
     private String userName;
+    private String password;
 
-    /**
-     * 用户类型（00系统用户）
-     */
-    private String userType;
 
     /**
      * 用户邮箱
